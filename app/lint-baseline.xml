@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.1.4" type="baseline" client="gradle" dependencies="false" name="AGP (8.1.4)" variant="all" version="8.1.4">
+
+    <issue
+        id="ScopedStorage"
+        message="WRITE_EXTERNAL_STORAGE is deprecated (and is not granted) when targeting Android 13+. If you need to write to shared storage, use the `MediaStore.createWriteRequest` intent."
+        errorLine1="    &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; />"
+        errorLine2="                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="44"
+            column="36"/>
+    </issue>
+
+    <issue
+        id="ScopedStorage"
+        message="READ_EXTERNAL_STORAGE is deprecated (and is not granted) when targeting Android 13+. If you need to query or interact with MediaStore or media files on the shared storage, you should instead use one or more new storage permissions: `READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO` or `READ_MEDIA_AUDIO`."
+        errorLine1="    &lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot; />"
+        errorLine2="                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="45"
+            column="36"/>
+    </issue>
+
+    <issue
+        id="OldTargetApi"
+        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details."
+        errorLine1="        targetSdkVersion 35"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="56"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="SdCardPath"
+        message="Do not hardcode &quot;/sdcard/&quot;; use `Environment.getExternalStorageDirectory().getPath()` instead"
+        errorLine1="    private static String FP_DB_PATH = &quot;/sdcard/fp.db&quot;;"
+        errorLine2="                                       ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/billzone/biopay/MainActivity.java"
+            line="65"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="ManifestOrder"
+        message="`&lt;uses-permission>` tag appears after `&lt;application>` tag"
+        errorLine1="    &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; />"
+        errorLine2="     ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="37"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="GetInstance"
+        message="`Cipher.getInstance` should not be called without setting the encryption mode and padding"
+        errorLine1="        Cipher cipher = Cipher.getInstance(TRANSFORMATION);"
+        errorLine2="                                           ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/billzone/biopay/FlutterEncryptionUtils.java"
+            line="14"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="GetInstance"
+        message="`Cipher.getInstance` should not be called without setting the encryption mode and padding"
+        errorLine1="        Cipher cipher = Cipher.getInstance(TRANSFORMATION);"
+        errorLine2="                                           ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/billzone/biopay/FlutterEncryptionUtils.java"
+            line="22"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v21`) is unnecessary; `minSdkVersion` is 21. Merge all the resources in this folder into `drawable`.">
+        <location
+            file="src/main/res/drawable-v21"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_OK` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_OK&quot;>OK&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="4"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_ERROR&quot;>Error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="5"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PARAMERR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PARAMERR&quot;>Params error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="6"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_TIMEOUT` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_TIMEOUT&quot;>Timeout&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="7"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_RECV_DATA_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_RECV_DATA_ERROR&quot;>Recv data error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="8"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_ICC_BASE_ERR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_ICC_BASE_ERR&quot;>Icc base error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="9"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_ICC_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_ICC_ERROR&quot;>Icc error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="10"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_ICC_PARAM_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_ICC_PARAM_ERROR&quot;>Icc param error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="11"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_ICC_NO_CARD` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_ICC_NO_CARD&quot;>Icc no card&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="12"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_ICC_NO_RESP` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_ICC_NO_RESP&quot;>Icc no resp&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="13"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_ICC_COMM_ERR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_ICC_COMM_ERR&quot;>Icc communicate error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="14"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_ICC_RESP_ERR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_ICC_RESP_ERR&quot;>Icc resp error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="15"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_ICC_NO_POWER_ON` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_ICC_NO_POWER_ON&quot;>Icc no power on&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="16"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_RF_BASE_ERR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_RF_BASE_ERR&quot;>Rf base error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="17"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_RF_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_RF_ERROR&quot;>Rf error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="18"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_RF_PARAM_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_RF_PARAM_ERROR&quot;>Rf param error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="19"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_RF_ERR_NOCARD` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_RF_ERR_NOCARD&quot;>Rf no card&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="20"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_RF_ERR_CARD_CONFLICT` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_RF_ERR_CARD_CONFLICT&quot;>Rf card conflict&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="21"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_RF_TIME_OUT` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_RF_TIME_OUT&quot;>Rf time out&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="22"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_RF_PROTOCOL_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_RF_PROTOCOL_ERROR&quot;>Rf error protocol&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="23"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_RF_TRANSMISSION_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_RF_TRANSMISSION_ERROR&quot;>Rf transmission error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="24"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_MAG_BASE_ERR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_MAG_BASE_ERR&quot;>Mag base error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="25"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_MAG_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_MAG_ERROR&quot;>Sdk mag error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="26"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_MAG_PARAM_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_MAG_PARAM_ERROR&quot;>Mag param error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="27"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_MAG_NO_BRUSH` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_MAG_NO_BRUSH&quot;>Mag no brush&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="28"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PRN_BASE_ERR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PRN_BASE_ERR&quot;>Print base error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="29"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PRN_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PRN_ERROR&quot;>Print error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="30"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PRN_PARAM_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PRN_PARAM_ERROR&quot;>Print params error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="31"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PRN_STATUS_PAPEROUT` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PRN_STATUS_PAPEROUT&quot;>Print status paper out&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="32"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PRN_STATUS_TOOHEAT` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PRN_STATUS_TOOHEAT&quot;>Print status too heat&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="33"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PRN_STATUS_FAULT` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PRN_STATUS_FAULT&quot;>Print status fault&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="34"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PAD_BASE_ERR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PAD_BASE_ERR&quot;>Pad base error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="35"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PAD_ERR_NOPIN` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PAD_ERR_NOPIN&quot;>Pad error no pin&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="36"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PAD_ERR_CANCEL` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PAD_ERR_CANCEL&quot;>Pad error cancel&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="37"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PAD_ERR_EXCEPTION` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PAD_ERR_EXCEPTION&quot;>pad work exception&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="38"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PAD_ERR_TIMEOUT` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PAD_ERR_TIMEOUT&quot;>Pad error timeout&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="39"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PAD_ERR_NEED_WAIT` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PAD_ERR_NEED_WAIT&quot;>Pad error need wait&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="40"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PAD_ERR_DUPLI_KEY` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PAD_ERR_DUPLI_KEY&quot;>Pad error dupli key&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="41"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PAD_ERR_INVALID_INDEX` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PAD_ERR_INVALID_INDEX&quot;>Pad err invalid index&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="42"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_PAD_ERR_NOTSET_KEY` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_PAD_ERR_NOTSET_KEY&quot;>Pad err no test key&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="43"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.SDK_UNKNOWN_ERROR` appears to be unused"
+        errorLine1="    &lt;string name=&quot;SDK_UNKNOWN_ERROR&quot;>Unknown error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="44"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.waiting` appears to be unused"
+        errorLine1="    &lt;string name=&quot;waiting&quot;>Please insert your card&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="45"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.msg_ic_card` appears to be unused"
+        errorLine1="    &lt;string name=&quot;msg_ic_card&quot;>...&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="46"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.title_activity_wip` appears to be unused"
+        errorLine1="    &lt;string name=&quot;title_activity_wip&quot;>WipActivity&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="47"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        errorLine1="    &lt;string name=&quot;msg_ic_card&quot;>...&lt;/string>"
+        errorLine2="                               ~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="46"
+            column="32"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="src/main/res/mipmap-hdpi/ic_launcher_adaptive_back.png"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="src/main/res/mipmap-mdpi/ic_launcher_adaptive_back.png"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="src/main/res/mipmap-xhdpi/ic_launcher_adaptive_back.png"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="src/main/res/mipmap-xxhdpi/ic_launcher_adaptive_back.png"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="src/main/res/mipmap-xxxhdpi/ic_launcher_adaptive_back.png"/>
+    </issue>
+
+    <issue
+        id="MonochromeLauncherIcon"
+        message="The application adaptive icon is missing a monochrome tag"
+        errorLine1="&lt;adaptive-icon xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;>"
+        errorLine2="^">
+        <location
+            file="src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+</issues>

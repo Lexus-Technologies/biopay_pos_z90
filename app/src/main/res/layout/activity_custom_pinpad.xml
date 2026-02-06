@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:padding="20dp"
+    android:gravity="bottom">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ENTER PIN"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/tvRetryMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Incorrect PIN. Attempt 2 of 3"
+        android:textColor="#FF0000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/pinDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F0F0F0"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="32sp"
+        android:letterSpacing="0.3"
+        android:layout_marginBottom="25dp"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp">
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#000000"
+            android:text="1"/>
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#000000"
+            android:text="2"/>
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#000000"
+            android:text="3"/>
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#000000"
+            android:text="4"/>
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#000000"
+            android:text="5"/>
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#000000"
+            android:text="6"/>
+
+        <Button
+            android:id="@+id/btn7"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#000000"
+            android:text="7"/>
+
+        <Button
+            android:id="@+id/btn8"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#000000"
+            android:text="8"/>
+
+        <Button
+            android:id="@+id/btn9"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#000000"
+            android:text="9"/>
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:backgroundTint="#FFA500"
+            android:textColor="#FFFFFF"
+            android:text="CLR"/>
+
+        <Button
+            android:id="@+id/btn0"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#000000"
+            android:text="0"/>
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="6dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:backgroundTint="#FF0000"
+            android:textColor="#FFFFFF"
+            android:text="CAN"/>
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="CONFIRM"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:enabled="false"/>
+
+</LinearLayout>

@@ -1,0 +1,2 @@
+/Users/mac/Desktop/biopay/android/app/.cxx/Debug/4r53k704/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/mac/Desktop/biopay/android/app/.cxx/Debug/4r53k704/armeabi-v7a/CMakeFiles/edit_cache.dir
