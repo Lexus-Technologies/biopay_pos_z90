@@ -23,11 +23,13 @@ public class FingerprintReader {
 
     public interface FingerprintCallback {
         void onSuccess(String data);
+
         void onError(String error);
     }
 
     public interface VerifyCallback {
         void onSuccess(boolean match);
+
         void onError(String error);
     }
 
@@ -45,11 +47,12 @@ public class FingerprintReader {
                 } else {
                     fpDbPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/fp.db";
                 }
-                if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(context,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions((MainActivity) context,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                    Manifest.permission.READ_EXTERNAL_STORAGE}, 10086);
+                            new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                    Manifest.permission.READ_EXTERNAL_STORAGE },
+                            10086);
                 }
             } else {
                 fpDbPath = context.getFilesDir().getPath() + "/fp.db";
@@ -62,7 +65,8 @@ public class FingerprintReader {
 
     public void captureFinger(FingerprintCallback callback) {
         new Thread(() -> {
-            if (!initFingerprint(callback)) return;
+            if (!initFingerprint(callback))
+                return;
 
             byte[] tpl = captureFeatureOnce();
             if (tpl == null) {
@@ -75,7 +79,7 @@ public class FingerprintReader {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 base64 = java.util.Base64.getEncoder().encodeToString(tpl);
             } else {
-                base64 = android.util.Base64.encodeToString(tpl, android.util.Base64.DEFAULT);
+                base64 = android.util.Base64.encodeToString(tpl, android.util.Base64.NO_WRAP);
             }
 
             teardownFingerprint();
@@ -85,7 +89,8 @@ public class FingerprintReader {
 
     public void captureFingerprintToString(FingerprintCallback callback) {
         new Thread(() -> {
-            if (!initFingerprint(callback)) return;
+            if (!initFingerprint(callback))
+                return;
 
             byte[] tpl = captureFeatureOnce();
             if (tpl == null) {
@@ -109,13 +114,15 @@ public class FingerprintReader {
         new Thread(() -> {
             if (!initFingerprint(new FingerprintCallback() {
                 @Override
-                public void onSuccess(String data) {}
+                public void onSuccess(String data) {
+                }
 
                 @Override
                 public void onError(String error) {
                     callback.onError(error);
                 }
-            })) return;
+            }))
+                return;
 
             byte[] existingTpl;
             try {
@@ -170,9 +177,18 @@ public class FingerprintReader {
     }
 
     private void teardownFingerprint() {
-        try { scanner.close(); } catch (Exception ignored) {}
-        try { scanner.powerOff(); } catch (Exception ignored) {}
-        try { Bione.exit(); } catch (Exception ignored) {}
+        try {
+            scanner.close();
+        } catch (Exception ignored) {
+        }
+        try {
+            scanner.powerOff();
+        } catch (Exception ignored) {
+        }
+        try {
+            Bione.exit();
+        } catch (Exception ignored) {
+        }
     }
 
     private byte[] captureFeatureOnce() {
