@@ -1,0 +1,2 @@
+/Users/mac/Projects/Billzone/biopay_pos_interface_z90/android/app/.cxx/Debug/184q393f/x86/CMakeFiles/edit_cache.dir
+/Users/mac/Projects/Billzone/biopay_pos_interface_z90/android/app/.cxx/Debug/184q393f/x86/CMakeFiles/rebuild_cache.dir
