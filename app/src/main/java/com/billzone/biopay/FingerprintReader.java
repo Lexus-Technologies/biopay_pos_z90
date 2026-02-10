@@ -65,43 +65,53 @@ public class FingerprintReader {
 
     public void captureFinger(FingerprintCallback callback) {
         new Thread(() -> {
-            if (!initFingerprint(callback))
-                return;
+            try {
+                if (!initFingerprint(callback))
+                    return;
 
-            byte[] tpl = captureFeatureOnce();
-            if (tpl == null) {
+                byte[] tpl = captureFeatureOnce();
+                if (tpl == null) {
+                    teardownFingerprint();
+                    callback.onError("Failed to capture fingerprint");
+                    return;
+                }
+
+                String base64;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    base64 = java.util.Base64.getEncoder().encodeToString(tpl);
+                } else {
+                    base64 = android.util.Base64.encodeToString(tpl, android.util.Base64.NO_WRAP);
+                }
+
                 teardownFingerprint();
-                callback.onError("Failed to capture fingerprint");
-                return;
+                callback.onSuccess(base64);
+            } catch (Exception e) {
+                teardownFingerprint();
+                callback.onError("Capture error: " + e.getMessage());
             }
-
-            String base64;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                base64 = java.util.Base64.getEncoder().encodeToString(tpl);
-            } else {
-                base64 = android.util.Base64.encodeToString(tpl, android.util.Base64.NO_WRAP);
-            }
-
-            teardownFingerprint();
-            callback.onSuccess(base64);
         }).start();
     }
 
     public void captureFingerprintToString(FingerprintCallback callback) {
         new Thread(() -> {
-            if (!initFingerprint(callback))
-                return;
+            try {
+                if (!initFingerprint(callback))
+                    return;
 
-            byte[] tpl = captureFeatureOnce();
-            if (tpl == null) {
+                byte[] tpl = captureFeatureOnce();
+                if (tpl == null) {
+                    teardownFingerprint();
+                    callback.onError("Failed to capture fingerprint");
+                    return;
+                }
+
+                String base64 = android.util.Base64.encodeToString(tpl, android.util.Base64.NO_WRAP);
                 teardownFingerprint();
-                callback.onError("Failed to capture fingerprint");
-                return;
+                callback.onSuccess(base64);
+            } catch (Exception e) {
+                teardownFingerprint();
+                callback.onError("Capture error: " + e.getMessage());
             }
-
-            String base64 = android.util.Base64.encodeToString(tpl, android.util.Base64.NO_WRAP);
-            teardownFingerprint();
-            callback.onSuccess(base64);
         }).start();
     }
 
@@ -112,42 +122,42 @@ public class FingerprintReader {
         }
 
         new Thread(() -> {
-            if (!initFingerprint(new FingerprintCallback() {
-                @Override
-                public void onSuccess(String data) {
+            try {
+                if (!initFingerprint(new FingerprintCallback() {
+                    @Override
+                    public void onSuccess(String data) {
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        callback.onError(error);
+                    }
+                }))
+                    return;
+
+                byte[] existingTpl;
+                try {
+                    existingTpl = android.util.Base64.decode(existingScanBase64, android.util.Base64.NO_WRAP);
+                } catch (Exception e) {
+                    teardownFingerprint();
+                    callback.onError("Invalid Base64");
+                    return;
                 }
 
-                @Override
-                public void onError(String error) {
-                    callback.onError(error);
+                byte[] freshTpl = captureFeatureOnce();
+                if (freshTpl == null) {
+                    teardownFingerprint();
+                    callback.onError("Failed to capture fingerprint");
+                    return;
                 }
-            }))
-                return;
 
-            byte[] existingTpl;
-            try {
-                existingTpl = android.util.Base64.decode(existingScanBase64, android.util.Base64.NO_WRAP);
-            } catch (Exception e) {
-                teardownFingerprint();
-                callback.onError("Invalid Base64");
-                return;
-            }
-
-            byte[] freshTpl = captureFeatureOnce();
-            if (freshTpl == null) {
-                teardownFingerprint();
-                callback.onError("Failed to capture fingerprint");
-                return;
-            }
-
-            try {
                 Result vr = Bione.verify(freshTpl, existingTpl);
                 boolean match = (vr != null && vr.data instanceof Boolean) && (Boolean) vr.data;
                 teardownFingerprint();
                 callback.onSuccess(match);
             } catch (Exception e) {
                 teardownFingerprint();
-                callback.onError("Verification error");
+                callback.onError("Verification error: " + e.getMessage());
             }
         }).start();
     }
@@ -192,16 +202,35 @@ public class FingerprintReader {
     }
 
     private byte[] captureFeatureOnce() {
-        scanner.prepare();
-        for (int i = 0; i <= 10; i++) {
-            Result res = scanner.capture();
-            FingerprintImage fi = (FingerprintImage) res.data;
-            if (fi != null && Bione.getFingerprintQuality(fi) >= 75) {
-                Result feat = Bione.extractFeature(fi);
-                if (feat != null && feat.error == Bione.RESULT_OK && feat.data instanceof byte[]) {
-                    return (byte[]) feat.data;
+        try {
+            scanner.prepare();
+            for (int i = 0; i <= 10; i++) {
+                try {
+                    Result res = scanner.capture();
+                    if (res == null || res.data == null)
+                        continue;
+
+                    FingerprintImage fi = (FingerprintImage) res.data;
+                    int quality = Bione.getFingerprintQuality(fi);
+                    Log.d(TAG, "Fingerprint quality: " + quality);
+
+                    if (fi != null && quality >= 95) {
+                        Result feat = Bione.extractIsoFeature(fi);
+                        if (feat != null && feat.error == Bione.RESULT_OK && feat.data instanceof byte[]) {
+                            byte[] featureData = (byte[]) feat.data;
+                            Log.d(TAG, "Feature data length: " + featureData.length);
+                            if (featureData.length > 30) {
+                                return featureData;
+                            }
+                            Log.d(TAG, "Feature data too small (" + featureData.length + " bytes), retrying...");
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "Capture iteration error: " + e.getMessage());
                 }
             }
+        } catch (Exception e) {
+            Log.e(TAG, "Capture error: " + e.getMessage());
         }
         return null;
     }
